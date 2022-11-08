@@ -20,7 +20,7 @@ const TableScreen = () => {
                 .then(function (response) {
                 //console.log(response.data.standings[0].table);
                 setPremierLeague(Object.values(response.data.standings[0].table))
-                console.log(response.data.standings[0].table[1].team.crest)
+                //console.log(response.data.standings[0].table[1].team.crest)
                 })
                 .catch(error => {
                 console.log(error)
@@ -43,22 +43,160 @@ const TableScreen = () => {
         keyExtractor={(item) => item.team.id}
         renderItem={({ item }) => {
             if (
-                item.team.shortName == "Tottenham"
-                || item.team.shortName == "Brighton Hove"
-                || item.team.shortName == "Fulham"
-                || item.team.shortName == "Wolverhampton"
+                item.team.shortName == "Tottenham" && item.position != "4" && item.position != "3" && item.position != "2" && item.position != "1" 
+                || item.team.shortName == "Brighton Hove" && item.position != "4" && item.position != "3" && item.position != "2" && item.position != "1"
+                || item.team.shortName == "Fulham" && item.position != "4" && item.position != "3" && item.position != "2" && item.position != "1"
+                || item.team.shortName == "Wolverhampton" && item.position != "4" && item.position != "3" && item.position != "2" && item.position != "1"
             ) {
                 return (
                     <View style={styles.listView}>
-                        <SvgUri style={styles.logo} width="30" height="30" uri={item.team.crest} />
-                        <Text style={styles.item}>{item.team.name}</Text>
+                        <Text style={styles.position}>{item.position}</Text>
+                        <SvgUri style={styles.logo} width="25" height="25" uri={item.team.crest} />
+                        <Text style={styles.name}>{item.team.shortName}</Text>
+                        <Text style={styles.points}>{item.points}</Text>
+                    </View>
+                )
+            } else if (item.position == "1"){
+                return (
+                    <View>
+                        <View style={styles.topView}>
+                            <Text style={styles.ChamionsText}>Champions League</Text>
+                            <Text style={styles.topText}>Pts</Text>
+                        </View>
+                        <View style={styles.listViewTop}>
+                            <Text style={styles.position}>{item.position}</Text>
+                            <Image style={styles.logo} source={{uri: item.team.crest}}></Image>
+                            <Text style={styles.name}>{item.team.shortName}</Text>
+                            <Text style={styles.points}>{item.points}</Text>
+                        </View>
+                    </View>
+                )
+            } else if (
+                item.team.shortName == "Tottenham" && item.position == "1"
+                || item.team.shortName == "Brighton Hove" && item.position == "1"
+                || item.team.shortName == "Fulham" && item.position == "1"
+                || item.team.shortName == "Wolverhampton" && item.position == "1"
+            ){
+                return (
+                    <View>
+                        <View style={styles.topView}>
+                            <Text style={styles.ChamionsText}>Champions League</Text>
+                            <Text style={styles.topText}>Pts</Text>
+                        </View>
+                        <View style={styles.listViewTop}>
+                            <Text style={styles.position}>{item.position}</Text>
+                            <SvgUri style={styles.logo} width="25" height="25" uri={item.team.crest} />
+                            <Text style={styles.name}>{item.team.shortName}</Text>
+                            <Text style={styles.points}>{item.points}</Text>
+                        </View>
+                    </View>
+                )
+            } else if (
+                item.team.shortName == "Tottenham" && item.position == "2"
+                || item.team.shortName == "Brighton Hove" && item.position == "2"
+                || item.team.shortName == "Fulham" && item.position == "2"
+                || item.team.shortName == "Wolverhampton" && item.position == "2"
+                || item.team.shortName == "Tottenham" && item.position == "3"
+                || item.team.shortName == "Brighton Hove" && item.position == "3"
+                || item.team.shortName == "Fulham" && item.position == "3"
+                || item.team.shortName == "Wolverhampton" && item.position == "3"
+                || item.team.shortName == "Tottenham" && item.position == "4"
+                || item.team.shortName == "Brighton Hove" && item.position == "4"
+                || item.team.shortName == "Fulham" && item.position == "4"
+                || item.team.shortName == "Wolverhampton" && item.position == "4"
+            ) {
+                return (
+                    <View>
+                        <View style={styles.listViewChampPosition}>
+                            <Text style={styles.position}>{item.position}</Text>
+                            <SvgUri style={styles.logo} width="25" height="25" uri={item.team.crest} />
+                            <Text style={styles.name}>{item.team.shortName}</Text>
+                            <Text style={styles.points}>{item.points}</Text>
+                        </View>
+                    </View>
+                )
+            } else if (
+                item.position == "2" || item.position == "3" || item.position == "4" 
+            ) {
+                return (
+                    <View>
+                        <View style={styles.listViewChampPosition}>
+                            <Text style={styles.position}>{item.position}</Text>
+                            <Image style={styles.logo} source={{uri: item.team.crest}}></Image>
+                            <Text style={styles.name}>{item.team.shortName}</Text>
+                            <Text style={styles.points}>{item.points}</Text>
+                        </View>
+                    </View>
+                )
+            } else if (item.position == "5"){
+                return (
+                    <View>
+                        <View style={styles.topView}>
+                            <Text style={styles.europaText}>Europa League</Text>
+                        </View>
+                        <View style={styles.listViewPosition5}>
+                            <Text style={styles.position}>{item.position}</Text>
+                            <Image style={styles.logo} source={{uri: item.team.crest}}></Image>
+                            <Text style={styles.name}>{item.team.shortName}</Text>
+                            <Text style={styles.points}>{item.points}</Text>
+                        </View>
+                    </View>
+                )
+            } else if (item.position == "7"){
+                return (
+                    <View>
+                        <View style={styles.topView}>
+                            <Text style={styles.europaCText}>Europa Conference League Qualification</Text>
+                        </View>
+                        <View style={styles.listViewPosition7}>
+                            <Text style={styles.position}>{item.position}</Text>
+                            <Image style={styles.logo} source={{uri: item.team.crest}}></Image>
+                            <Text style={styles.name}>{item.team.shortName}</Text>
+                            <Text style={styles.points}>{item.points}</Text>
+                        </View>
+                    </View>
+                )
+            } else if (item.position == "8"){
+                return (
+                    <View>
+                        <View style={styles.listViewPosition7}>
+                            <Text style={styles.position}>{item.position}</Text>
+                            <Image style={styles.logo} source={{uri: item.team.crest}}></Image>
+                            <Text style={styles.name}>{item.team.shortName}</Text>
+                            <Text style={styles.points}>{item.points}</Text>
+                        </View>
+                    </View>
+                )
+            } else if (item.position == "18"){
+                return (
+                    <View>
+                        <View style={styles.topView}>
+                            <Text style={styles.relegationText}>Relegation</Text>
+                        </View>
+                        <View style={styles.listViewPosition18}>
+                            <Text style={styles.position}>{item.position}</Text>
+                            <Image style={styles.logo} source={{uri: item.team.crest}}></Image>
+                            <Text style={styles.name}>{item.team.shortName}</Text>
+                            <Text style={styles.points}>{item.points}</Text>
+                        </View>
+                    </View>
+                )
+            } else if (item.position == "20"){
+                return (
+                    <View style={styles.listViewBottom}>
+                        <Text style={styles.position}>{item.position}</Text>
+                        <Image style={styles.logo} source={{uri: item.team.crest}}></Image>
+                        <Text style={styles.name}>{item.team.shortName}</Text>
+                        <Text style={styles.points}>{item.points}</Text>
                     </View>
                 )
             } else {
                 return (
                     <View style={styles.listView}>
+                        <Text style={styles.position}>{item.position}</Text>
                         <Image style={styles.logo} source={{uri: item.team.crest}}></Image>
-                        <Text style={styles.item}>{item.team.name}</Text>
+                        <Text style={styles.name}>{item.team.shortName}</Text>
+                        <Text style={styles.points}>{item.points}</Text>
                     </View>
                 )
             }
@@ -75,17 +213,10 @@ const styles = StyleSheet.create({
         marginTop: 70,
         marginBottom: 20,
         backgroundColor: "white",
-        width: "95%%",
+        width: "100%",
         alignSelf: "center",
         height: "auto",
         borderRadius: 5,
-        shadowOffset: {
-            width: 0,
-            height: 4,
-            },
-        shadowOpacity: 0.25,
-        shadowRadius: 5,
-        elevation: 5,
     },
     titleStyle: {
         fontSize: 40,
@@ -94,10 +225,6 @@ const styles = StyleSheet.create({
         color: "purple"
     },
     flatlist: {
-        marginBottom: 150,
-    },
-    listView: {
-        flexDirection: "row",
         shadowOffset: {
             width: 0,
             height: 4,
@@ -105,21 +232,152 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 5,
         elevation: 5,
-        backgroundColor: "white",
-        marginBottom: 5,
-        width: "80%",
-        alignSelf: "center",
-        borderRadius: 25
+        marginBottom: 180,
+        backgroundColor: "white"
     },
-    item: {
-        textAlign: "center",
-        margin: 20,
-        color: "purple"
+    listView: {
+        flexDirection: "row",
+        justifyContent: "center",
+        width: "95%",
+        alignSelf: "center",
+        borderBottomColor: "lightgray##ey",
+        borderBottomWidth: 1
+    },
+    listViewBottom: {
+        flexDirection: "row",
+        justifyContent: "center",
+
+        width: "95%",
+        alignSelf: "center",
+        borderBottomColor: "lightgrey",
+        borderBottomWidth: 1,  
+    },
+    listViewTop: {
+        flexDirection: "row",
+        justifyContent: "center",
+        width: "95%",
+        alignSelf: "center",
+        borderBottomColor: "lightgrey",
+        borderBottomWidth: 1,
+        borderTopColor: "lightgrey",
+        borderTopWidth: 1
+    },
+    listViewPosition5: {
+        flexDirection: "row",
+        justifyContent: "center",
+        width: "95%",
+        alignSelf: "center",
+        borderBottomColor: "lightgrey",
+        borderBottomWidth: 1,
+        borderTopColor: "lightgrey",
+        borderTopWidth: 1,
+        marginTop: 12,
+    },
+    listViewPosition7: {
+        flexDirection: "row",
+        justifyContent: "center",
+        width: "95%",
+        alignSelf: "center",
+        borderBottomColor: "lightgrey",
+        borderBottomWidth: 1,
+        borderTopColor: "lightgrey",
+        borderTopWidth: 1,
+        marginTop: 12,
+        marginBottom: 5
+    },
+    listViewPosition18: {
+        flexDirection: "row",
+        justifyContent: "center",
+        width: "95%",
+        alignSelf: "center",
+        borderBottomColor: "lightgrey",
+        borderBottomWidth: 1,
+        borderTopColor: "lightgrey",
+        borderTopWidth: 1,
+        marginTop: 12,
+    },
+    name: {
+        marginHorizontal: 15,
+        marginTop: 10,
+        marginBottom: 10,
+        color: "purple",
+        left: 40,
     },
     logo: {
-        width: 30,
-        height: 30,
+        width: 25,
+        height: 25,
+        position: "absolute",
         alignSelf: "center",
-        marginLeft: 10,
-    }
+        left: 80
+    },
+    points: {
+        marginHorizontal: 15,
+        marginTop: 10,
+        marginBottom: 10,
+        color: "purple",
+        position: "absolute",
+        right: 0
+    },
+    position: {
+        marginHorizontal: 15,
+        marginTop: 10,
+        marginBottom: 10,
+        color: "purple",
+        position: "absolute",
+        left: 0
+    },
+    topText: {
+        marginHorizontal: 10,
+        color: "purple",
+        position: "absolute",
+        right: 0,
+        fontSize: 20,
+        fontWeight: "bold"
+    },
+    topView: {
+        width: "95%",
+        alignSelf: "center",
+        height: "auto",
+        marginBottom: 25
+    },
+    ChamionsText: {
+        color: "purple",
+        position: "absolute",
+        left: 0,
+        fontSize: 20,
+        fontWeight: "bold"
+    },
+    europaText: {
+        marginTop: 10,
+        color: "purple",
+        position: "absolute",
+        left: 0,
+        fontSize: 20,
+        fontWeight: "bold"
+    },
+    listViewChampPosition: {
+        flexDirection: "row",
+        justifyContent: "center",
+        width: "95%",
+        alignSelf: "center",
+        borderBottomColor: "lightgrey",
+        borderBottomWidth: 1,
+        borderTopColor: "lightgrey",
+    },
+    europaCText: {
+        marginTop: 10,
+        color: "purple",
+        position: "absolute",
+        left: 0,
+        fontSize: 20,
+        fontWeight: "bold"
+    },  
+    relegationText: {
+        marginTop: 10,
+        color: "purple",
+        position: "absolute",
+        left: 0,
+        fontSize: 20,
+        fontWeight: "bold"
+    }, 
 })
