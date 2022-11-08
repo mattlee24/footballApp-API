@@ -29,7 +29,7 @@ const TableScreen = () => {
         getPremierLeague(); 
     }, []);
 
-    console.log(premierLeague)
+    //console.log(premierLeague)
 
   return (
     <View>
@@ -43,10 +43,10 @@ const TableScreen = () => {
         keyExtractor={(item) => item.team.id}
         renderItem={({ item }) => {
             if (
-                item.team.shortName == "Tottenham" && item.position != "4" && item.position != "3" && item.position != "2" && item.position != "1" 
-                || item.team.shortName == "Brighton Hove" && item.position != "4" && item.position != "3" && item.position != "2" && item.position != "1"
-                || item.team.shortName == "Fulham" && item.position != "4" && item.position != "3" && item.position != "2" && item.position != "1"
-                || item.team.shortName == "Wolverhampton" && item.position != "4" && item.position != "3" && item.position != "2" && item.position != "1"
+                item.team.shortName == "Tottenham" && item.position != "1" && item.position != "5" && item.position != "7" && item.position != "8" && item.position != "18" && item.position != "20"
+                || item.team.shortName == "Brighton Hove" && item.position != "1" && item.position != "5" && item.position != "7" && item.position != "8" && item.position != "18" && item.position != "20"
+                || item.team.shortName == "Fulham" && item.position != "1" && item.position != "5" && item.position != "7" && item.position != "8" && item.position != "18" && item.position != "20"
+                || item.team.shortName == "Wolverhampton" && item.position != "1" && item.position != "5" && item.position != "7" && item.position != "8" && item.position != "18" && item.position != "20"
             ) {
                 return (
                     <View style={styles.listView}>
@@ -60,7 +60,7 @@ const TableScreen = () => {
                 return (
                     <View>
                         <View style={styles.topView}>
-                            <Text style={styles.ChamionsText}>Champions League</Text>
+                            <Text style={styles.ChamionsText}>CHAMPIONS LEAGUE</Text>
                             <Text style={styles.topText}>Pts</Text>
                         </View>
                         <View style={styles.listViewTop}>
@@ -80,7 +80,7 @@ const TableScreen = () => {
                 return (
                     <View>
                         <View style={styles.topView}>
-                            <Text style={styles.ChamionsText}>Champions League</Text>
+                            <Text style={styles.ChamionsText}>CHAMPIONS LEAGUE</Text>
                             <Text style={styles.topText}>Pts</Text>
                         </View>
                         <View style={styles.listViewTop}>
@@ -91,48 +91,11 @@ const TableScreen = () => {
                         </View>
                     </View>
                 )
-            } else if (
-                item.team.shortName == "Tottenham" && item.position == "2"
-                || item.team.shortName == "Brighton Hove" && item.position == "2"
-                || item.team.shortName == "Fulham" && item.position == "2"
-                || item.team.shortName == "Wolverhampton" && item.position == "2"
-                || item.team.shortName == "Tottenham" && item.position == "3"
-                || item.team.shortName == "Brighton Hove" && item.position == "3"
-                || item.team.shortName == "Fulham" && item.position == "3"
-                || item.team.shortName == "Wolverhampton" && item.position == "3"
-                || item.team.shortName == "Tottenham" && item.position == "4"
-                || item.team.shortName == "Brighton Hove" && item.position == "4"
-                || item.team.shortName == "Fulham" && item.position == "4"
-                || item.team.shortName == "Wolverhampton" && item.position == "4"
-            ) {
-                return (
-                    <View>
-                        <View style={styles.listViewChampPosition}>
-                            <Text style={styles.position}>{item.position}</Text>
-                            <SvgUri style={styles.logo} width="25" height="25" uri={item.team.crest} />
-                            <Text style={styles.name}>{item.team.shortName}</Text>
-                            <Text style={styles.points}>{item.points}</Text>
-                        </View>
-                    </View>
-                )
-            } else if (
-                item.position == "2" || item.position == "3" || item.position == "4" 
-            ) {
-                return (
-                    <View>
-                        <View style={styles.listViewChampPosition}>
-                            <Text style={styles.position}>{item.position}</Text>
-                            <Image style={styles.logo} source={{uri: item.team.crest}}></Image>
-                            <Text style={styles.name}>{item.team.shortName}</Text>
-                            <Text style={styles.points}>{item.points}</Text>
-                        </View>
-                    </View>
-                )
             } else if (item.position == "5"){
                 return (
                     <View>
                         <View style={styles.topView}>
-                            <Text style={styles.europaText}>Europa League</Text>
+                            <Text style={styles.europaText}>EUROPA LEAGUE</Text>
                         </View>
                         <View style={styles.listViewPosition5}>
                             <Text style={styles.position}>{item.position}</Text>
@@ -142,11 +105,30 @@ const TableScreen = () => {
                         </View>
                     </View>
                 )
+            } else if (
+                item.team.shortName == "Tottenham" && item.position == "5"
+                || item.team.shortName == "Brighton Hove" && item.position == "5"
+                || item.team.shortName == "Fulham" && item.position == "5"
+                || item.team.shortName == "Wolverhampton" && item.position == "5"
+            ){
+                return (
+                    <View>
+                        <View style={styles.topView}>
+                            <Text style={styles.europaText}>EUROPA LEAGUE</Text>
+                        </View>
+                        <View style={styles.listViewPosition5}>
+                            <Text style={styles.position}>{item.position}</Text>
+                            <SvgUri style={styles.logo} width="25" height="25" uri={item.team.crest} />
+                            <Text style={styles.name}>{item.team.shortName}</Text>
+                            <Text style={styles.points}>{item.points}</Text>
+                        </View>
+                    </View>
+                )
             } else if (item.position == "7"){
                 return (
                     <View>
                         <View style={styles.topView}>
-                            <Text style={styles.europaCText}>Europa Conference League Qualification</Text>
+                            <Text style={styles.europaCText}>EUROPA CONFERENCE LEAGUE QUALIFICATION</Text>
                         </View>
                         <View style={styles.listViewPosition7}>
                             <Text style={styles.position}>{item.position}</Text>
@@ -156,12 +138,47 @@ const TableScreen = () => {
                         </View>
                     </View>
                 )
+            } else if (
+                item.team.shortName == "Tottenham" && item.position == "7"
+                || item.team.shortName == "Brighton Hove" && item.position == "7"
+                || item.team.shortName == "Fulham" && item.position == "7"
+                || item.team.shortName == "Wolverhampton" && item.position == "7"
+            ){
+                return (
+                    <View>
+                        <View style={styles.topView}>
+                            <Text style={styles.europaCText}>EUROPA CONFERENCE LEAGUE QUALIFICATION</Text>
+                        </View>
+                        <View style={styles.listViewPosition7}>
+                            <Text style={styles.position}>{item.position}</Text>
+                            <SvgUri style={styles.logo} width="25" height="25" uri={item.team.crest} />
+                            <Text style={styles.name}>{item.team.shortName}</Text>
+                            <Text style={styles.points}>{item.points}</Text>
+                        </View>
+                    </View>
+                )
             } else if (item.position == "8"){
                 return (
                     <View>
-                        <View style={styles.listViewPosition7}>
+                        <View style={styles.listViewPosition8}>
                             <Text style={styles.position}>{item.position}</Text>
                             <Image style={styles.logo} source={{uri: item.team.crest}}></Image>
+                            <Text style={styles.name}>{item.team.shortName}</Text>
+                            <Text style={styles.points}>{item.points}</Text>
+                        </View>
+                    </View>
+                )
+            } else if (
+                item.team.shortName == "Tottenham" && item.position == "8"
+                || item.team.shortName == "Brighton Hove" && item.position == "8"
+                || item.team.shortName == "Fulham" && item.position == "8"
+                || item.team.shortName == "Wolverhampton" && item.position == "8"
+            ){
+                return (
+                    <View>
+                        <View style={styles.listViewPosition8}>
+                            <Text style={styles.position}>{item.position}</Text>
+                            <SvgUri style={styles.logo} width="25" height="25" uri={item.team.crest} />
                             <Text style={styles.name}>{item.team.shortName}</Text>
                             <Text style={styles.points}>{item.points}</Text>
                         </View>
@@ -171,11 +188,30 @@ const TableScreen = () => {
                 return (
                     <View>
                         <View style={styles.topView}>
-                            <Text style={styles.relegationText}>Relegation</Text>
+                            <Text style={styles.relegationText}>RELEGATION</Text>
                         </View>
                         <View style={styles.listViewPosition18}>
                             <Text style={styles.position}>{item.position}</Text>
                             <Image style={styles.logo} source={{uri: item.team.crest}}></Image>
+                            <Text style={styles.name}>{item.team.shortName}</Text>
+                            <Text style={styles.points}>{item.points}</Text>
+                        </View>
+                    </View>
+                )
+            } else if (
+                item.team.shortName == "Tottenham" && item.position == "18"
+                || item.team.shortName == "Brighton Hove" && item.position == "18"
+                || item.team.shortName == "Fulham" && item.position == "18"
+                || item.team.shortName == "Wolverhampton" && item.position == "18"
+            ){
+                return (
+                    <View>
+                        <View style={styles.topView}>
+                            <Text style={styles.relegationText}>RELEGATION</Text>
+                        </View>
+                        <View style={styles.listViewPosition18}>
+                            <Text style={styles.position}>{item.position}</Text>
+                            <SvgUri style={styles.logo} width="25" height="25" uri={item.team.crest} />
                             <Text style={styles.name}>{item.team.shortName}</Text>
                             <Text style={styles.points}>{item.points}</Text>
                         </View>
@@ -186,6 +222,20 @@ const TableScreen = () => {
                     <View style={styles.listViewBottom}>
                         <Text style={styles.position}>{item.position}</Text>
                         <Image style={styles.logo} source={{uri: item.team.crest}}></Image>
+                        <Text style={styles.name}>{item.team.shortName}</Text>
+                        <Text style={styles.points}>{item.points}</Text>
+                    </View>
+                )
+            } else if (
+                item.team.shortName == "Tottenham" && item.position == "20"
+                || item.team.shortName == "Brighton Hove" && item.position == "20"
+                || item.team.shortName == "Fulham" && item.position == "20"
+                || item.team.shortName == "Wolverhampton" && item.position == "20"
+            ){
+                return (
+                    <View style={styles.listViewBottom}>
+                        <Text style={styles.position}>{item.position}</Text>
+                        <SvgUri style={styles.logo} width="25" height="25" uri={item.team.crest} />
                         <Text style={styles.name}>{item.team.shortName}</Text>
                         <Text style={styles.points}>{item.points}</Text>
                     </View>
@@ -222,7 +272,7 @@ const styles = StyleSheet.create({
         fontSize: 40,
         textAlign: "center",
         fontWeight: "bold",
-        color: "purple"
+        color: "navy"
     },
     flatlist: {
         shadowOffset: {
@@ -233,29 +283,30 @@ const styles = StyleSheet.create({
         shadowRadius: 5,
         elevation: 5,
         marginBottom: 180,
-        backgroundColor: "white"
+        width: "95%",
+        alignSelf: "center",
+        backgroundColor: "white",
     },
     listView: {
         flexDirection: "row",
-        justifyContent: "center",
-        width: "95%",
+        backgroundColor: "white",
+        width: "100%",
         alignSelf: "center",
-        borderBottomColor: "lightgray##ey",
+        borderBottomColor: "lightgrey",
         borderBottomWidth: 1
     },
     listViewBottom: {
         flexDirection: "row",
-        justifyContent: "center",
-
-        width: "95%",
+        backgroundColor: "white",
+        width: "100%",
         alignSelf: "center",
         borderBottomColor: "lightgrey",
         borderBottomWidth: 1,  
     },
     listViewTop: {
         flexDirection: "row",
-        justifyContent: "center",
-        width: "95%",
+        backgroundColor: "white",
+        width: "100%",
         alignSelf: "center",
         borderBottomColor: "lightgrey",
         borderBottomWidth: 1,
@@ -264,8 +315,8 @@ const styles = StyleSheet.create({
     },
     listViewPosition5: {
         flexDirection: "row",
-        justifyContent: "center",
-        width: "95%",
+        backgroundColor: "white",
+        width: "100%",
         alignSelf: "center",
         borderBottomColor: "lightgrey",
         borderBottomWidth: 1,
@@ -275,20 +326,30 @@ const styles = StyleSheet.create({
     },
     listViewPosition7: {
         flexDirection: "row",
-        justifyContent: "center",
-        width: "95%",
+        backgroundColor: "white",
+        width: "100%",
         alignSelf: "center",
         borderBottomColor: "lightgrey",
         borderBottomWidth: 1,
         borderTopColor: "lightgrey",
         borderTopWidth: 1,
-        marginTop: 12,
-        marginBottom: 5
+        marginTop: 10,
+    },
+    listViewPosition8: {
+        flexDirection: "row",
+        backgroundColor: "white",
+        width: "100%",
+        alignSelf: "center",
+        borderBottomColor: "lightgrey",
+        borderBottomWidth: 1,
+        borderTopColor: "lightgrey",
+        borderTopWidth: 1,
+        marginTop: 20,
     },
     listViewPosition18: {
         flexDirection: "row",
-        justifyContent: "center",
-        width: "95%",
+        backgroundColor: "white",
+        width: "100%",
         alignSelf: "center",
         borderBottomColor: "lightgrey",
         borderBottomWidth: 1,
@@ -300,59 +361,62 @@ const styles = StyleSheet.create({
         marginHorizontal: 15,
         marginTop: 10,
         marginBottom: 10,
-        color: "purple",
-        left: 40,
+        color: "black",
+        textAlign: "left",
+        left: 60
     },
     logo: {
         width: 25,
         height: 25,
         position: "absolute",
         alignSelf: "center",
-        left: 80
+        left: 40,
     },
     points: {
         marginHorizontal: 15,
         marginTop: 10,
         marginBottom: 10,
-        color: "purple",
+        color: "black",
         position: "absolute",
-        right: 0
+        right: 0,
+        fontWeight: "bold"
     },
     position: {
         marginHorizontal: 15,
         marginTop: 10,
         marginBottom: 10,
-        color: "purple",
+        color: "black",
         position: "absolute",
-        left: 0
+        left: 0,
+        fontWeight: "bold"
     },
     topText: {
         marginHorizontal: 10,
-        color: "purple",
+        color: "lightgrey",
         position: "absolute",
         right: 0,
         fontSize: 20,
-        fontWeight: "bold"
+        fontWeight: "bold",
     },
     topView: {
-        width: "95%",
+        width: "100%",
         alignSelf: "center",
         height: "auto",
-        marginBottom: 25
+        marginBottom: 25,
     },
     ChamionsText: {
-        color: "purple",
+        color: "lightgrey",
         position: "absolute",
         left: 0,
-        fontSize: 20,
+        fontSize: 15,
         fontWeight: "bold"
     },
     europaText: {
         marginTop: 10,
-        color: "purple",
+        color: "lightgrey",
         position: "absolute",
         left: 0,
-        fontSize: 20,
+        fontSize: 15,
         fontWeight: "bold"
     },
     listViewChampPosition: {
@@ -366,18 +430,18 @@ const styles = StyleSheet.create({
     },
     europaCText: {
         marginTop: 10,
-        color: "purple",
+        color: "lightgrey",
         position: "absolute",
         left: 0,
-        fontSize: 20,
+        fontSize: 15,
         fontWeight: "bold"
     },  
     relegationText: {
         marginTop: 10,
-        color: "purple",
+        color: "lightgrey",
         position: "absolute",
         left: 0,
-        fontSize: 20,
+        fontSize: 15,
         fontWeight: "bold"
     }, 
 })
