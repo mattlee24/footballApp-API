@@ -42,13 +42,26 @@ const TableScreen = () => {
         showsVerticalScrollIndicator={false}
         keyExtractor={(item) => item.team.id}
         renderItem={({ item }) => {
+            if (
+                item.team.shortName == "Tottenham"
+                || item.team.shortName == "Brighton Hove"
+                || item.team.shortName == "Fulham"
+                || item.team.shortName == "Wolverhampton"
+            ) {
                 return (
                     <View style={styles.listView}>
-                        {/* <SvgUri style={styles.logo} width="30" height="30" uri={item.team.crest} /> */}
+                        <SvgUri style={styles.logo} width="30" height="30" uri={item.team.crest} />
+                        <Text style={styles.item}>{item.team.name}</Text>
+                    </View>
+                )
+            } else {
+                return (
+                    <View style={styles.listView}>
                         <Image style={styles.logo} source={{uri: item.team.crest}}></Image>
                         <Text style={styles.item}>{item.team.name}</Text>
                     </View>
                 )
+            }
         }}
       />
     </View>
@@ -107,6 +120,6 @@ const styles = StyleSheet.create({
         width: 30,
         height: 30,
         alignSelf: "center",
-        marginLeft: 10
+        marginLeft: 10,
     }
 })
