@@ -1,9 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
-import { Image, ScrollView, StyleSheet, Text, View, FlatList } from 'react-native';
+import { Image, ScrollView, StyleSheet, Text, View, FlatList, ImageBackground, TextStyle } from 'react-native';
 import { useState, useEffect } from 'react';
 import React from 'react';
 import axios from 'axios';
-import { SvgUri } from 'react-native-svg';
+import { SvgUri } from 'react-native-svg'; 
+import champions from '../assets/championsLeague.png'
 
 const TableScreen = () => {
 
@@ -30,7 +31,7 @@ const TableScreen = () => {
         getPremierLeague(); 
     }, []);
 
-    console.log(premierLeague)
+    //console.log(premierLeague)
 
   return (
     <View>
@@ -473,9 +474,13 @@ const styles = StyleSheet.create({
         borderBottomColor: "lightgrey",
         borderBottomWidth: 1,  
     },
+    imageBackground: {
+        height: "100%",
+        width: "100%"
+    },
     listViewTop: {
         flexDirection: "row",
-        backgroundColor: "yellow",
+        backgroundColor: "lightgreen",
         width: "100%",
         alignSelf: "center",
         borderBottomColor: "lightgrey",
@@ -485,26 +490,27 @@ const styles = StyleSheet.create({
     },
     listViewTopChamp: {
         flexDirection: "row",
-        backgroundColor: "#ADD8E6",
         width: "100%",
+        height: "auto",
         alignSelf: "center",
+        alignContent: "center",
         borderBottomColor: "lightgrey",
         borderBottomWidth: 1,
     },
     listViewPosition5: {
         flexDirection: "row",
-        backgroundColor: "#FED8B1",
+        backgroundColor: "white",
         width: "100%",
         alignSelf: "center",
         borderBottomColor: "lightgrey",
         borderBottomWidth: 1,
         borderTopColor: "lightgrey",
         borderTopWidth: 1,
-        marginTop: 12,
+        marginTop: 10,
     },
     listViewPosition6: {
         flexDirection: "row",
-        backgroundColor: "#FED8B1",
+        backgroundColor: "white",
         width: "100%",
         alignSelf: "center",
         borderBottomColor: "lightgrey",
@@ -512,7 +518,7 @@ const styles = StyleSheet.create({
     },
     listViewPosition7: {
         flexDirection: "row",
-        backgroundColor: "lightgreen",
+        backgroundColor: "white",
         width: "100%",
         alignSelf: "center",
         borderBottomColor: "lightgrey",
@@ -555,7 +561,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 15,
         marginTop: 10,
         marginBottom: 10,
-        color: "black",
+        color: "grey",
         textAlign: "left",
         left: 60
     },
@@ -676,15 +682,6 @@ const styles = StyleSheet.create({
         left: 0,
         fontSize: 15,
         fontWeight: "bold"
-    },
-    listViewChampPosition: {
-        flexDirection: "row",
-        justifyContent: "center",
-        width: "95%",
-        alignSelf: "center",
-        borderBottomColor: "lightgrey",
-        borderBottomWidth: 1,
-        borderTopColor: "lightgrey",
     },
     europaCText: {
         marginTop: 10,
