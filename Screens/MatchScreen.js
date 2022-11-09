@@ -1,4 +1,4 @@
-import { Image, ScrollView, StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
+import { Image, ScrollView, StyleSheet, Text, View, FlatList, TouchableOpacity, Dimensions  } from 'react-native';
 import { useState, useEffect } from 'react';
 import React from 'react';
 import axios from 'axios';
@@ -26,24 +26,6 @@ const MatchScreen = () => {
         }
         getMatchData(); 
     }, []);
-
-    const hasDateTime = (dateTime) => {
-        if (dateTime != null) {
-            let dt = dateTime;
-            if (dt.includes("T")){
-                dt = dt.replace("T", " ");
-                dt = dt.replace("Z", " ");
-                dt = dt.split(" ")
-                dt = dt[1]
-                dt = dt.split(":")
-                dt.pop()
-                dt = dt.join(":")
-            }
-            return (
-                <Text style={styles.dtText}>{dt}</Text>
-            )
-        }
-    }
 
     const hasCorrectImageHome = (imagePath) => {
         if (imagePath != null) {
@@ -89,12 +71,59 @@ const MatchScreen = () => {
         }
     }
 
+    const isFinished = (status, dateTime) => {
+        if (status != null) {
+            let ST = status;
+            if ( ST === "FINISHED" ) {
+                return (
+                    <Text style={styles.dtTextFullTime}>Full-Time</Text>
+                )
+            } else if ( ST === "POSTPONED" ) {
+                return (
+                    <Text style={styles.dtTextPostponed}>Postponed</Text>
+                )
+            } else if ( ST === "TIMED" ) {
+                if (dateTime != null) {
+                    let dt = dateTime;
+                    if (dt.includes("T")){
+                        dt = dt.replace("T", " ");
+                        dt = dt.replace("Z", " ");
+                        dt = dt.split(" ")
+                        dt = dt[1]
+                        dt = dt.split(":")
+                        dt.pop()
+                        dt = dt.join(":")
+                    } 
+                    return (
+                        <Text style={styles.dtTextTimed}>{dt}</Text>
+                    )
+                }
+            } else if ( ST === "SCHEDULED" ) {
+                if (dateTime != null) {
+                    let dt = dateTime;
+                    if (dt.includes("T")){
+                        dt = dt.replace("T", " ");
+                        dt = dt.replace("Z", " ");
+                        dt = dt.split(" ")
+                        dt = dt[1]
+                        dt = dt.split(":")
+                        dt.pop()
+                        dt = dt.join(":")
+                    } 
+                    return (
+                        <Text style={styles.dtTextTimed}>{dt}</Text>
+                    )
+                }
+            }
+        }
+    }
+
     //console.log(matchData)
 
   return (
     <View style={styles.container}>
     <View style={styles.titleView}>
-        <Image source={ require("../assets/premLogo.png") } style={styles.premLogo}/>
+        <Image source={{ uri: "https://www.pngkey.com/png/full/340-3408257_premier-league-logo-premier-league-logo-png.png" }} style={styles.premLogo}/>
         <Text style={styles.titleStyle}>Premier League</Text>
         <Text style={styles.titleStyle2}>England</Text>
     </View>
@@ -122,7 +151,7 @@ const MatchScreen = () => {
                         </View>
                     </View>
                     <View style={styles.dTView}>
-                        {hasDateTime(item.utcDate)}
+                        {isFinished(item.status, item.utcDate)}
                     </View>
                 </View>
             </TouchableOpacity>
@@ -138,10 +167,11 @@ export default MatchScreen
 
 const styles = StyleSheet.create({
     premLogo: {
-        width: 50,
-        height: 50,
+        width: 80,
+        height: 80,
         alignSelf: "center",
-        marginTop: 70
+        marginTop: 50,
+        marginBottom: -15,
     },
     titleView: {
         justifyContent: "center",
@@ -167,14 +197,14 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     flatlist: {
-        width: "90%",
+        width: "100%",
         alignSelf: "center",
+        marginBottom: 260
     },
     matchView: {
         flexDirection: "row",
         backgroundColor: "white",
         width: "100%",
-        borderRadius: 10,
         height: "auto",
         marginTop: 20,
         // shadowColor: "black",
@@ -210,19 +240,34 @@ const styles = StyleSheet.create({
     },
     row: {
         flexDirection: "row",
-        width: 200
+        width: Dimensions.get('window').width * 0.55
     },
     dTView: {
-        width: 160,
-        height: "80%",
+        width: Dimensions.get('window').width * 0.45,
+        height: "70%",
         alignItems: "center",
         borderLeftWidth: 1,
         borderLeftColor: "lightgrey",
-        alignSelf: "center"
+        alignSelf: "center",
+        alignContent: "center",
     },
-    dtText: {
-        marginTop: 40,
-        fontSize: 18
+    dtTextFullTime: {
+        fontSize: 15,
+        textAlign: "center",
+        color: "grey",
+        marginTop: 35
+    },
+    dtTextPostponed: {
+        fontSize: 15,
+        textAlign: "center",
+        color: "red",
+        marginTop: 35
+    },
+    dtTextTimed: {
+        fontSize: 18,
+        textAlign: "center",
+        color: "black",
+        marginTop: 35
     },
     scoreHome: {
         position: "absolute",

@@ -34,7 +34,7 @@ const TableScreen = () => {
   return (
     <View style={styles.container}>
         <View style={styles.titleView}>
-            <Image source={ require("../assets/premLogo.png") } style={styles.premLogo}/>
+            <Image source={{ uri: "https://www.pngkey.com/png/full/340-3408257_premier-league-logo-premier-league-logo-png.png" }} style={styles.premLogo}/>
             <Text style={styles.titleStyle}>Premier League</Text>
             <Text style={styles.titleStyle2}>England</Text>
         </View> 
@@ -417,10 +417,11 @@ const styles = StyleSheet.create({
         backgroundColor: "white"
     },
     premLogo: {
-        width: 50,
-        height: 50,
+        width: 80,
+        height: 80,
         alignSelf: "center",
-        marginTop: 70
+        marginTop: 50,
+        marginBottom: -15
     },
     titleView: {
         justifyContent: "center",
