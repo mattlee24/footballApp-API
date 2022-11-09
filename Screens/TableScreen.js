@@ -1,10 +1,8 @@
-import { StatusBar } from 'expo-status-bar';
-import { Image, ScrollView, StyleSheet, Text, View, FlatList, ImageBackground, TextStyle } from 'react-native';
+import { Image, ScrollView, StyleSheet, Text, View, FlatList } from 'react-native';
 import { useState, useEffect } from 'react';
 import React from 'react';
 import axios from 'axios';
 import { SvgUri } from 'react-native-svg'; 
-import champions from '../assets/championsLeague.png'
 
 const TableScreen = () => {
 
@@ -34,7 +32,7 @@ const TableScreen = () => {
     //console.log(premierLeague)
 
   return (
-    <View>
+    <View style={styles.container}>
         <View style={styles.titleView}>
             <Image source={ require("../assets/premLogo.png") } style={styles.premLogo}/>
             <Text style={styles.titleStyle}>Premier League</Text>
@@ -67,7 +65,7 @@ const TableScreen = () => {
                 )
             } else if (item.position == "1" && item.team.shortName != "Tottenham"  && item.team.shortName != "Brighton Hove" && item.team.shortName != "Fulham" && item.team.shortName != "Wolverhampton"){
                 return (
-                    <View>
+                    <View style={styles.topMargin}>
                         <View style={styles.topView}>
                             <Text style={styles.ChamionsText}>CHAMPIONS LEAGUE</Text>
                             <Text style={styles.topText}>Pts</Text>
@@ -93,7 +91,7 @@ const TableScreen = () => {
                 || item.team.shortName == "Wolverhampton" && item.position == "1"
             ){
                 return (
-                    <View>
+                    <View style={styles.topMargin}>
                         <View style={styles.topView}>
                             <Text style={styles.ChamionsText}>CHAMPIONS LEAGUE</Text>
                             <Text style={styles.topText}>Pts</Text>
@@ -415,20 +413,21 @@ const TableScreen = () => {
 export default TableScreen
 
 const styles = StyleSheet.create({
+    container: {
+        backgroundColor: "white"
+    },
     premLogo: {
         width: 50,
         height: 50,
         alignSelf: "center",
+        marginTop: 70
     },
     titleView: {
         justifyContent: "center",
-        marginTop: 70,
-        marginBottom: 20,
         backgroundColor: "white",
         width: "100%",
         alignSelf: "center",
         height: "auto",
-        borderRadius: 5,
     },
     titleStyle: {
         fontSize: 25,
@@ -444,17 +443,14 @@ const styles = StyleSheet.create({
         color: "grey",
         alignSelf: "center",
         marginTop: 5,
+        marginBottom: 10,
+    },
+    topMargin: {
+        marginTop: 10,
     },
     flatlist: {
-        shadowOffset: {
-            width: 0,
-            height: 4,
-            },
-        shadowOpacity: 0.25,
-        shadowRadius: 5,
-        elevation: 5,
-        marginBottom: 250,
-        width: "95%",
+        marginBottom: 255,
+        width: "100%",
         alignSelf: "center",
         backgroundColor: "white",
     },
@@ -472,7 +468,8 @@ const styles = StyleSheet.create({
         width: "100%",
         alignSelf: "center",
         borderBottomColor: "lightgrey",
-        borderBottomWidth: 1,  
+        borderBottomWidth: 1, 
+        marginBottom: 10, 
     },
     imageBackground: {
         height: "100%",
@@ -486,7 +483,7 @@ const styles = StyleSheet.create({
         borderBottomColor: "lightgrey",
         borderBottomWidth: 1,
         borderTopColor: "lightgrey",
-        borderTopWidth: 1
+        borderTopWidth: 1,
     },
     listViewTopChamp: {
         flexDirection: "row",
@@ -506,7 +503,6 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderTopColor: "lightgrey",
         borderTopWidth: 1,
-        marginTop: 10,
     },
     listViewPosition6: {
         flexDirection: "row",
@@ -525,7 +521,6 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderTopColor: "lightgrey",
         borderTopWidth: 1,
-        marginTop: 10,
     },
     listViewPosition8: {
         flexDirection: "row",
@@ -536,7 +531,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderTopColor: "lightgrey",
         borderTopWidth: 1,
-        marginTop: 20,
+        marginTop: 5,
     },
     listViewPosition18: {
         flexDirection: "row",
@@ -547,7 +542,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderTopColor: "lightgrey",
         borderTopWidth: 1,
-        marginTop: 12,
+        marginTop: 1,
     },
     listViewPosition19: {
         flexDirection: "row",
@@ -671,31 +666,31 @@ const styles = StyleSheet.create({
     ChamionsText: {
         color: "lightgrey",
         position: "absolute",
-        left: 0,
+        left: 5,
         fontSize: 15,
-        fontWeight: "bold"
+        fontWeight: "bold",
     },
     europaText: {
-        marginTop: 10,
+        marginTop: 5,
         color: "lightgrey",
         position: "absolute",
-        left: 0,
+        left: 5,
         fontSize: 15,
         fontWeight: "bold"
     },
     europaCText: {
-        marginTop: 10,
+        marginTop: 5,
         color: "lightgrey",
         position: "absolute",
-        left: 0,
+        left: 5,
         fontSize: 15,
         fontWeight: "bold"
     },  
     relegationText: {
-        marginTop: 10,
+        marginTop: 5,
         color: "lightgrey",
         position: "absolute",
-        left: 0,
+        left: 5,
         fontSize: 15,
         fontWeight: "bold"
     }, 
