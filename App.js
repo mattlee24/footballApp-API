@@ -25,7 +25,7 @@ export default function App() {
           tabBarStyle: [
             {
               backgroundColor: "white",
-              borderTopColor: "white",
+              borderTopColor: "lightgrey",
               position: "absolute",
               height: 80,
               paddingBottom: 30,
@@ -59,16 +59,16 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  shadow: {
-    shadowColor: "black",
-    shadowOffset: {
-      width: 0,
-      height: 0,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 10,
-    elevation: 5
-  },
+  // shadow: {
+  //   shadowColor: "black",
+  //   shadowOffset: {
+  //     width: 0,
+  //     height: 0,
+  //   },
+  //   shadowOpacity: 0.25,
+  //   shadowRadius: 10,
+  //   elevation: 5
+  // },
   icon: {
     marginTop: 5,
   }

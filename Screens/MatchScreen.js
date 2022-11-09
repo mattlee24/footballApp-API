@@ -1,4 +1,4 @@
-import { Image, ScrollView, StyleSheet, Text, View, FlatList, TouchableOpacity, Dimensions  } from 'react-native';
+import { Image, ScrollView, StyleSheet, Text, View, FlatList, TouchableOpacity, Dimensions, SectionList  } from 'react-native';
 import { useState, useEffect } from 'react';
 import React from 'react';
 import axios from 'axios';
@@ -17,7 +17,7 @@ const MatchScreen = () => {
                 headers: {"X-Auth-Token": "a15a58c93e3446f28dbe7643924532d1"}
                 })
                 .then(function (response) {
-                //console.log(response.data.matches[200]);
+                console.log(response.data.matches[3].matchday);
                 setmatchData(Object.values(response.data.matches))
                 })
                 .catch(error => {
@@ -134,29 +134,32 @@ const MatchScreen = () => {
         //refreshing={refreshing}
         //onRefresh={() => {getData}}
         keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-            (
-            <TouchableOpacity>
-                <View style={styles.matchView}>
-                    <View>
-                        <View style={styles.row}>
-                            {hasCorrectImageHome(item.homeTeam.crest)}
-                            <Text style={styles.teamHome}>{item.homeTeam.shortName}</Text>
-                            <Text style={styles.scoreHome}>{item.score.fullTime.home}</Text>
+        renderItem={({ item }) => {
+            if (item.matchday === 1){
+                return (
+                    <TouchableOpacity>
+                        <View style={styles.matchView}>
+                            <View>
+                                <View style={styles.row}>
+                                    {hasCorrectImageHome(item.homeTeam.crest)}
+                                    <Text style={styles.teamHome}>{item.homeTeam.shortName}</Text>
+                                    <Text style={styles.scoreHome}>{item.score.fullTime.home}</Text>
+                                </View>
+                                <View style={styles.row}>
+                                    {hasCorrectImageAway(item.awayTeam.crest)}
+                                    <Text style={styles.teamAway}>{item.awayTeam.shortName}</Text>
+                                    <Text style={styles.scoreAway}>{item.score.fullTime.away}</Text>
+                                </View>
+                            </View>
+                            <View style={styles.dTView}>
+                                {isFinished(item.status, item.utcDate)}
+                            </View>
                         </View>
-                        <View style={styles.row}>
-                            {hasCorrectImageAway(item.awayTeam.crest)}
-                            <Text style={styles.teamAway}>{item.awayTeam.shortName}</Text>
-                            <Text style={styles.scoreAway}>{item.score.fullTime.away}</Text>
-                        </View>
-                    </View>
-                    <View style={styles.dTView}>
-                        {isFinished(item.status, item.utcDate)}
-                    </View>
-                </View>
-            </TouchableOpacity>
-            )
-        )}
+                    </TouchableOpacity>
+                )
+            }
+        }
+    }
 
       />
     </View>
@@ -199,14 +202,24 @@ const styles = StyleSheet.create({
     flatlist: {
         width: "100%",
         alignSelf: "center",
-        marginBottom: 260
+        marginBottom: 250,
+        backgroundColor: "white",
+        shadowColor: "black",
+        shadowOffset: {
+        width: 0,
+        height: 0,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 10,
+        elevation: 5
     },
     matchView: {
         flexDirection: "row",
-        backgroundColor: "white",
-        width: "100%",
+        width: "90%",
         height: "auto",
-        marginTop: 20,
+        borderTopWidth: 1,
+        borderTopColor: "lightgrey",
+        alignSelf: "center"
         // shadowColor: "black",
         // shadowOffset: {
         // width: 0,
@@ -243,7 +256,7 @@ const styles = StyleSheet.create({
         width: Dimensions.get('window').width * 0.55
     },
     dTView: {
-        width: Dimensions.get('window').width * 0.45,
+        width: Dimensions.get('window').width * 0.38,
         height: "70%",
         alignItems: "center",
         borderLeftWidth: 1,
