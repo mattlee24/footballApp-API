@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flex: 1,
     justifyContent: "center",
+    shadowColor: "black",
     shadowOffset: {
         width: 0,
         height: 4,
