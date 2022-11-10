@@ -1,13 +1,12 @@
-import { Image, ScrollView, StyleSheet, Text, View, FlatList, TouchableOpacity, Dimensions, Pressable } from 'react-native';
+import { Image, ScrollView, StyleSheet, Text, View, FlatList, TouchableOpacity, Dimensions, SectionList  } from 'react-native';
 import { useState, useEffect } from 'react';
 import React from 'react';
 import axios from 'axios';
 import { SvgUri } from 'react-native-svg'; 
-import Ionicons from '@expo/vector-icons/Ionicons';
 
-const MatchScreen = ({navigation, route}) => {
+const MatchScreen = () => {
 
-    const [matchData, setmatchData] = useState([])
+    const [matchData, setmatchData] = useState({})
 
     useEffect(() => {
         const getMatchData = async () => {
@@ -121,45 +120,55 @@ const MatchScreen = ({navigation, route}) => {
         }
     }
 
+    let num = 0
+
     //console.log(matchData)
 
   return (
     <View style={styles.container}>
-        <View style={styles.titleView}>
-            <Image source={{ uri: "https://www.pngkey.com/png/full/340-3408257_premier-league-logo-premier-league-logo-png.png" }} style={styles.premLogo}/>
-            <Text style={styles.titleStyle}>Premier League</Text>
-            <Text style={styles.titleStyle2}>England</Text>
-        </View>
-        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.buttonback}>
-            <Ionicons name={"arrow-back-circle"} size={50} color={"#38003c"}/>
-        </TouchableOpacity>
-        <ScrollView style={styles.flatlist}>
-            {matchData.map((item) => {
-                if (item.matchday === route.params.paramA){
-                    return (
-                        <TouchableOpacity key={item.id}>
-                            <View style={styles.matchView}>
-                                <View>
-                                    <View style={styles.row}>
-                                        {hasCorrectImageHome(item.homeTeam.crest)}
-                                        <Text style={styles.teamHome}>{item.homeTeam.shortName}</Text>
-                                        <Text style={styles.scoreHome}>{item.score.fullTime.home}</Text>
-                                    </View>
-                                    <View style={styles.row}>
-                                        {hasCorrectImageAway(item.awayTeam.crest)}
-                                        <Text style={styles.teamAway}>{item.awayTeam.shortName}</Text>
-                                        <Text style={styles.scoreAway}>{item.score.fullTime.away}</Text>
-                                    </View>
+    <View style={styles.titleView}>
+        <Image source={{ uri: "https://www.pngkey.com/png/full/340-3408257_premier-league-logo-premier-league-logo-png.png" }} style={styles.premLogo}/>
+        <Text style={styles.titleStyle}>Premier League</Text>
+        <Text style={styles.titleStyle2}>England</Text>
+    </View>
+      <FlatList 
+        style={styles.flatlist}
+        data={matchData}
+        showsVerticalScrollIndicator={false}
+        //refreshing={refreshing}
+        //onRefresh={() => {getData}}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => {
+            //console.log(item)
+            if (item.matchday === 20 && item.matchday == num){
+                return (
+                    <TouchableOpacity>
+                        <View style={styles.matchView}>
+                            <View>
+                                <View style={styles.row}>
+                                    {hasCorrectImageHome(item.homeTeam.crest)}
+                                    <Text style={styles.teamHome}>{item.homeTeam.shortName}</Text>
+                                    <Text style={styles.scoreHome}>{item.score.fullTime.home}</Text>
                                 </View>
-                                <View style={styles.dTView}>
-                                    {isFinished(item.status, item.utcDate)}
+                                <View style={styles.row}>
+                                    {hasCorrectImageAway(item.awayTeam.crest)}
+                                    <Text style={styles.teamAway}>{item.awayTeam.shortName}</Text>
+                                    <Text style={styles.scoreAway}>{item.score.fullTime.away}</Text>
                                 </View>
                             </View>
-                        </TouchableOpacity>
-                    );
-                }
-            })}
-        </ScrollView>
+                            <View style={styles.dTView}>
+                                {isFinished(item.status, item.utcDate)}
+                            </View>
+                        </View>
+                    </TouchableOpacity>
+                )
+            } else {
+                num ++
+            }
+        }
+    }
+
+      />
     </View>
   )
 }
@@ -196,20 +205,6 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         marginTop: 5,
         marginBottom: 10,
-    },
-    buttonback: {
-        marginLeft: 30,
-        position: "absolute",
-        left: 0,
-        marginTop: 100,
-        shadowColor: "black",
-        shadowOffset: {
-        width: 0,
-        height: 0,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 10,
-        elevation: 5
     },
     flatlist: {
         width: "100%",

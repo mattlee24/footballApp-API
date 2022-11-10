@@ -1,10 +1,23 @@
 import { StyleSheet } from 'react-native';
 import TableScreen from './Screens/TableScreen';
 import MatchScreen from './Screens/MatchScreen';
+import DayChoiceScreen from './Screens/DayChoiceScreen';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-//import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
+
+function MatchScreenStack() {
+
+  const Stack = createStackNavigator();
+
+  return (
+    <Stack.Navigator screenOptions={() => ({headerShown: false})}>
+      <Stack.Screen name="DayChoiceScreen" component={DayChoiceScreen}/>
+      <Stack.Screen name="MatchScreen" component={MatchScreen} />
+    </Stack.Navigator> 
+  )
+}
 
 
 export default function App() {
@@ -37,7 +50,7 @@ export default function App() {
 
             if (route.name === "Table") {
               iconName = focused ? "menu" : "menu-outline"
-            } else if (route.name === "Matches") {
+            } else if (route.name === "MatchChoice") {
               iconName = focused ? "football" : "football-outline"
             }   
             return (
@@ -52,7 +65,7 @@ export default function App() {
         })}
       >
         <Tab.Screen name="Table" component={TableScreen} />
-        <Tab.Screen name="Matches" component={MatchScreen} />
+        <Tab.Screen name="MatchChoice" component={MatchScreenStack} />
       </Tab.Navigator>
     </NavigationContainer>
   );
