@@ -50,7 +50,7 @@ export default function App() {
 
             if (route.name === "Table") {
               iconName = focused ? "menu" : "menu-outline"
-            } else if (route.name === "MatchChoice") {
+            } else if (route.name === "Matchday") {
               iconName = focused ? "football" : "football-outline"
             }   
             return (
@@ -65,7 +65,7 @@ export default function App() {
         })}
       >
         <Tab.Screen name="Table" component={TableScreen} />
-        <Tab.Screen name="MatchChoice" component={MatchScreenStack} />
+        <Tab.Screen name="Matchday" component={MatchScreenStack} />
       </Tab.Navigator>
     </NavigationContainer>
   );

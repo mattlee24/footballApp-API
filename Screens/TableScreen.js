@@ -463,10 +463,10 @@ const styles = StyleSheet.create({
         shadowColor: "black",
         shadowOffset: {
         width: 0,
-        height: 0,
+        height: 5,
         },
         shadowOpacity: 0.25,
-        shadowRadius: 10,
+        shadowRadius: 5,
         elevation: 5
     },
     listViewBottom: {
@@ -478,10 +478,10 @@ const styles = StyleSheet.create({
         shadowColor: "black",
         shadowOffset: {
         width: 0,
-        height: 0,
+        height: 5,
         },
         shadowOpacity: 0.25,
-        shadowRadius: 10,
+        shadowRadius: 5,
         elevation: 5 
     },
     imageBackground: {
@@ -496,10 +496,10 @@ const styles = StyleSheet.create({
         shadowColor: "black",
         shadowOffset: {
         width: 0,
-        height: 0,
+        height: 5,
         },
         shadowOpacity: 0.25,
-        shadowRadius: 10,
+        shadowRadius: 5,
         elevation: 5
     },
     listViewTopChamp: {
@@ -512,10 +512,10 @@ const styles = StyleSheet.create({
         shadowColor: "black",
         shadowOffset: {
         width: 0,
-        height: 0,
+        height: 5,
         },
         shadowOpacity: 0.25,
-        shadowRadius: 10,
+        shadowRadius: 5,
         elevation: 5
     },
     listViewPosition5: {
@@ -526,10 +526,10 @@ const styles = StyleSheet.create({
         shadowColor: "black",
         shadowOffset: {
         width: 0,
-        height: 0,
+        height: 5,
         },
         shadowOpacity: 0.25,
-        shadowRadius: 10,
+        shadowRadius: 5,
         elevation: 5
     },
     listViewPosition6: {
@@ -540,10 +540,10 @@ const styles = StyleSheet.create({
         shadowColor: "black",
         shadowOffset: {
         width: 0,
-        height: 0,
+        height: 5,
         },
         shadowOpacity: 0.25,
-        shadowRadius: 10,
+        shadowRadius: 5,
         elevation: 5
     },
     listViewPosition7: {
@@ -554,10 +554,10 @@ const styles = StyleSheet.create({
         shadowColor: "black",
         shadowOffset: {
         width: 0,
-        height: 0,
+        height: 5,
         },
         shadowOpacity: 0.25,
-        shadowRadius: 10,
+        shadowRadius: 5,
         elevation: 5
     },
     listViewPosition8: {
@@ -569,10 +569,10 @@ const styles = StyleSheet.create({
         shadowColor: "black",
         shadowOffset: {
         width: 0,
-        height: 0,
+        height: 5,
         },
         shadowOpacity: 0.25,
-        shadowRadius: 10,
+        shadowRadius: 5,
         elevation: 5
     },
     listViewPosition18: {
@@ -584,10 +584,10 @@ const styles = StyleSheet.create({
         shadowColor: "black",
         shadowOffset: {
         width: 0,
-        height: 0,
+        height: 5,
         },
         shadowOpacity: 0.25,
-        shadowRadius: 10,
+        shadowRadius: 5,
         elevation: 5
     },
     listViewPosition19: {
@@ -598,10 +598,10 @@ const styles = StyleSheet.create({
         shadowColor: "black",
         shadowOffset: {
         width: 0,
-        height: 0,
+        height: 5,
         },
         shadowOpacity: 0.25,
-        shadowRadius: 10,
+        shadowRadius: 5,
         elevation: 5
     },
     name: {
