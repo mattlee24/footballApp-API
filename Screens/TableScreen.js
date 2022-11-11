@@ -1,4 +1,4 @@
-import { Image, ScrollView, StyleSheet, Text, View, FlatList } from 'react-native';
+import { Image, ScrollView, StyleSheet, Text, View, FlatList, ImageBackground } from 'react-native';
 import { useState, useEffect } from 'react';
 import React from 'react';
 import axios from 'axios';
@@ -33,11 +33,16 @@ const TableScreen = () => {
 
   return (
     <View style={styles.container}>
-        <View style={styles.titleView}>
-            <Image source={{ uri: "https://www.pngkey.com/png/full/340-3408257_premier-league-logo-premier-league-logo-png.png" }} style={styles.premLogo}/>
-            <Text style={styles.titleStyle}>Premier League</Text>
-            <Text style={styles.titleStyle2}>England</Text>
-        </View> 
+         <ImageBackground 
+            style={styles.background} 
+            source={{uri: "https://i.pinimg.com/originals/5c/e6/46/5ce646b91386e769e12aa3f02c8a2a8c.gif"}}
+            resizeMode={"cover"}
+            >
+            <View style={styles.titleView}>
+                <Image source={{ uri: "https://www.pngkey.com/png/full/340-3408257_premier-league-logo-premier-league-logo-png.png" }} style={styles.premLogo}/>
+                <Text style={styles.titleStyle}>Premier League</Text>
+            </View> 
+        </ImageBackground>
         <FlatList 
         style={styles.flatlist}
         data={premierLeague}
@@ -425,41 +430,12 @@ const styles = StyleSheet.create({
     },
     titleView: {
         justifyContent: "center",
-        backgroundColor: "white",
+        backgroundColor: "transparent",
         width: "100%",
         alignSelf: "center",
         height: "auto",
-    },
-    titleStyle: {
-        fontSize: 25,
-        textAlign: "center",
-        fontWeight: "bold",
-        color: "#38003c",
-        alignSelf: "center",
-    },
-    titleStyle2: {
-        fontSize: 18,
-        textAlign: "center",
-        fontWeight: "bold",
-        color: "grey",
-        alignSelf: "center",
-        marginTop: 5,
-        marginBottom: 10,
-    },
-    topMargin: {
-        marginTop: 10,
-    },
-    flatlist: {
-        marginBottom: 250,
-        width: "100%",
-        alignSelf: "center",
-        backgroundColor: "white",
-    },
-    listView: {
-        flexDirection: "row",
-        backgroundColor: "white",
-        width: "100%",
-        alignSelf: "center",
+        borderBottomColor: "lightgrey",
+        borderBottomWidth: "0.4",
         shadowColor: "black",
         shadowOffset: {
         width: 0,
@@ -469,20 +445,51 @@ const styles = StyleSheet.create({
         shadowRadius: 5,
         elevation: 5
     },
+    titleStyle: {
+        fontSize: 25,
+        textAlign: "center",
+        fontWeight: "bold",
+        color: "#38003c",
+        alignSelf: "center",
+        marginBottom: 10,
+    },
+    topMargin: {
+        marginTop: 10,
+    },
+    flatlist: {
+        marginBottom: 230,
+        width: "100%",
+        alignSelf: "center",
+        backgroundColor: "white",
+    },
+    listView: {
+        flexDirection: "row",
+        backgroundColor: "white",
+        width: "100%",
+        alignSelf: "center",
+        // shadowColor: "black",
+        // shadowOffset: {
+        // width: 0,
+        // height: 5,
+        // },
+        // shadowOpacity: 0.25,
+        // shadowRadius: 5,
+        // elevation: 5
+    },
     listViewBottom: {
         flexDirection: "row",
         backgroundColor: "#FFCCCB",
         width: "100%",
         alignSelf: "center",
         marginBottom: 10,
-        shadowColor: "black",
-        shadowOffset: {
-        width: 0,
-        height: 5,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 5,
-        elevation: 5 
+        // shadowColor: "black",
+        // shadowOffset: {
+        // width: 0,
+        // height: 5,
+        // },
+        // shadowOpacity: 0.25,
+        // shadowRadius: 5,
+        // elevation: 5 
     },
     imageBackground: {
         height: "100%",
@@ -493,14 +500,14 @@ const styles = StyleSheet.create({
         backgroundColor: "lightgreen",
         width: "100%",
         alignSelf: "center",
-        shadowColor: "black",
-        shadowOffset: {
-        width: 0,
-        height: 5,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 5,
-        elevation: 5
+        // shadowColor: "black",
+        // shadowOffset: {
+        // width: 0,
+        // height: 5,
+        // },
+        // shadowOpacity: 0.25,
+        // shadowRadius: 5,
+        // elevation: 5
     },
     listViewTopChamp: {
         flexDirection: "row",
@@ -509,56 +516,56 @@ const styles = StyleSheet.create({
         height: "auto",
         alignSelf: "center",
         alignContent: "center",
-        shadowColor: "black",
-        shadowOffset: {
-        width: 0,
-        height: 5,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 5,
-        elevation: 5
+        // shadowColor: "black",
+        // shadowOffset: {
+        // width: 0,
+        // height: 5,
+        // },
+        // shadowOpacity: 0.25,
+        // shadowRadius: 5,
+        // elevation: 5
     },
     listViewPosition5: {
         flexDirection: "row",
         backgroundColor: "white",
         width: "100%",
         alignSelf: "center",
-        shadowColor: "black",
-        shadowOffset: {
-        width: 0,
-        height: 5,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 5,
-        elevation: 5
+        // shadowColor: "black",
+        // shadowOffset: {
+        // width: 0,
+        // height: 5,
+        // },
+        // shadowOpacity: 0.25,
+        // shadowRadius: 5,
+        // elevation: 5
     },
     listViewPosition6: {
         flexDirection: "row",
         backgroundColor: "white",
         width: "100%",
         alignSelf: "center",
-        shadowColor: "black",
-        shadowOffset: {
-        width: 0,
-        height: 5,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 5,
-        elevation: 5
+        // shadowColor: "black",
+        // shadowOffset: {
+        // width: 0,
+        // height: 5,
+        // },
+        // shadowOpacity: 0.25,
+        // shadowRadius: 5,
+        // elevation: 5
     },
     listViewPosition7: {
         flexDirection: "row",
         backgroundColor: "white",
         width: "100%",
         alignSelf: "center",
-        shadowColor: "black",
-        shadowOffset: {
-        width: 0,
-        height: 5,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 5,
-        elevation: 5
+        // shadowColor: "black",
+        // shadowOffset: {
+        // width: 0,
+        // height: 5,
+        // },
+        // shadowOpacity: 0.25,
+        // shadowRadius: 5,
+        // elevation: 5
     },
     listViewPosition8: {
         flexDirection: "row",
@@ -566,14 +573,14 @@ const styles = StyleSheet.create({
         width: "100%",
         alignSelf: "center",
         marginTop: 5,
-        shadowColor: "black",
-        shadowOffset: {
-        width: 0,
-        height: 5,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 5,
-        elevation: 5
+        // shadowColor: "black",
+        // shadowOffset: {
+        // width: 0,
+        // height: 5,
+        // },
+        // shadowOpacity: 0.25,
+        // shadowRadius: 5,
+        // elevation: 5
     },
     listViewPosition18: {
         flexDirection: "row",
@@ -581,28 +588,28 @@ const styles = StyleSheet.create({
         width: "100%",
         alignSelf: "center",
         marginTop: 1,
-        shadowColor: "black",
-        shadowOffset: {
-        width: 0,
-        height: 5,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 5,
-        elevation: 5
+        // shadowColor: "black",
+        // shadowOffset: {
+        // width: 0,
+        // height: 5,
+        // },
+        // shadowOpacity: 0.25,
+        // shadowRadius: 5,
+        // elevation: 5
     },
     listViewPosition19: {
         flexDirection: "row",
         backgroundColor: "#FFCCCB",
         width: "100%",
         alignSelf: "center",
-        shadowColor: "black",
-        shadowOffset: {
-        width: 0,
-        height: 5,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 5,
-        elevation: 5
+        // shadowColor: "black",
+        // shadowOffset: {
+        // width: 0,
+        // height: 5,
+        // },
+        // shadowOpacity: 0.25,
+        // shadowRadius: 5,
+        // elevation: 5
     },
     name: {
         marginHorizontal: 15,
